@@ -12,7 +12,8 @@
     "node": "~0.8.0"
   },
   "scripts": {
-    "start": "brunch watch --server"
+    "start": "brunch watch --server",
+    "postinstall": "brunch build -P"
   },
   "dependencies": {
     "clean-css-brunch": "~1.7.1",
@@ -22,7 +23,9 @@
     "less-brunch": "~1.7.0",
     "sass-brunch": "~1.7.0",
     "uglify-js-brunch": "~1.7.3",
-    "read-components": "~0.5.1"
+    "read-components": "~0.5.1",
+    "statik": ">= 1.1.0",
+    "brunch": "1.x"
   },
   "devDependencies": {
     "expect.js": "~0.2.0"

@@ -2,11 +2,28 @@ var model = require("./model");
 
 module.exports = model.extend({
   initialize: function() {
+    this.startChecking();
+  },
+  startChecking: function() {
+    this.set("nopoll", false);
+    this.checkGeo();
+
+    var that = this;
+    this.interval = setInterval(function() {
+      that.checkGeo();
+    }, 30000);
+  },
+  clearInterval: function() {
+    if(this.interval) {
+      clearInterval(this.interval);
+    }
+  },
+  checkGeo: function() {
     var that = this
         defaults = this.default;
 
     var geo = window.navigator && window.navigator.geolocation;
-    if(false && geo && typeof geo.getCurrentPosition == "function") {
+    if(geo && typeof geo.getCurrentPosition == "function") {
       geo.getCurrentPosition(function(geoposition) {
         that.set(that.parse(geoposition));
       }, function(){
@@ -14,7 +31,7 @@ module.exports = model.extend({
       }, {timeout: 4000});
     } else {
       _.defer(function() {
-        that.set(that.parse(defaults))
+        that.set(that.parse(defaults));
       });
     }
   },

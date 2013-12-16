@@ -4,9 +4,14 @@
 	</div>
 </header>
 
-<div class="container">
-	<p class="lead">Locking your bike to the entrance of the YMCA is not necessary!</p>
-
+<div class="container messages">
+  {{#unless models}}
+  <h3 class="alert alert-danger">No parking options found in your area! (we only know about sf...)</h3>
+  {{/unless}}
+  {{#unless polling}}
+  <h3>Polling for changes disabled by moving map</h3>
+  <button class="reenable btn btn-default btn-lg">Re-enable</button>
+  {{/unless}}
   <div class="row">
 
 	</div>
