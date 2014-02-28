@@ -25,7 +25,7 @@ module.exports = collection.extend({
   },
   locationHasher: function(coords) {
     //rough hash
-    return coords.latitudex + coords.longitude;
+    return coords.latitude + coords.longitude;
   },
   //would prefer to do in model but model.parse is not called until after collection tries to access id
   parse: function(response) {
